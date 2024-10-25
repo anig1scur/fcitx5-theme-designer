@@ -3,10 +3,10 @@
 import { useState } from 'react';
 import { ThemeConfigForm } from '@/components/ThemeConfigForm';
 import { ThemePreview } from '@/components/ThemePreview';
-import { ThemeConfig, defaultTheme } from '@/types/theme';
+import { ThemeConfig, defaultConfig } from '@/types/theme';
 
 export default function Home() {
-  const [config, setConfig] = useState<ThemeConfig>(defaultTheme);
+  const [config, setConfig] = useState<ThemeConfig>(defaultConfig);
 
   return (
     <div className="flex min-h-screen">

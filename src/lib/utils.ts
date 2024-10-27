@@ -14,7 +14,7 @@ export function exportThemeFile(config: ThemeConfig) {
 
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'theme.conf';
+  a.download = `${config.name || 'theme'}.conf`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);

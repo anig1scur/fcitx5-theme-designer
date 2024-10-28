@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { ThemeConfigForm } from '@/components/ThemeConfigForm';
-import { ThemePreview } from '@/components/ThemePreview';
+import { Preview as ThemePreview } from '@/components/ThemePreview';
 import { ThemeConfig, defaultConfig } from '@/types/theme';
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
           onConfigChange={ setConfig }
         />
       </div>
-      <div className="w-1/2 p-6">
+      <div className="w-1/2 p-6 sticky top-20 h-fit">
         <h2 className="text-2xl font-bold mb-6">预览</h2>
         <ThemePreview config={ config } />
       </div>

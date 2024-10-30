@@ -32,24 +32,30 @@ Bottom=${config.textMargin.bottom}`);
   sections.push(`[InputPanel/Background]
 Color=${config.background.color}`);
 
-  // Background Margin section
-  sections.push(`[InputPanel/Background/Margin]
-Left=${config.background.margin.left}
-Right=${config.background.margin.right}
-Top=${config.background.margin.top}
-Bottom=${config.background.margin.bottom}`);
+  //   // Background Margin section
+  //   sections.push(`[InputPanel/Background/Margin]
+  // Left=${config.background.margin.left}
+  // Right=${config.background.margin.right}
+  // Top=${config.background.margin.top}
+  // Bottom=${config.background.margin.bottom}`);
 
   // Highlight section
   sections.push(`[InputPanel/Highlight]
 Color=${config.highlight.color}`);
 
+  //   // Highlight Margin section
+  //   sections.push(`[InputPanel/Highlight/Margin]
+  // Left=${config.highlight.margin.left}
+  // Right=${config.highlight.margin.right}
+  // Top=${config.highlight.margin.top}
+  // Bottom=${config.highlight.margin.bottom}`);
+
   // Highlight Margin section
   sections.push(`[InputPanel/Highlight/Margin]
-Left=${config.highlight.margin.left}
-Right=${config.highlight.margin.right}
-Top=${config.highlight.margin.top}
-Bottom=${config.highlight.margin.bottom}`);
-
+Left=${config.textMargin.left}
+Right=${config.textMargin.right}
+Top=${config.textMargin.top}
+Bottom=${config.textMargin.bottom}`);
   return sections.join('\n\n');
 }
 
@@ -99,7 +105,6 @@ export function parseThemeFile(content: string): ThemeConfig {
 
     // Margins
     blurMargin: {left: 0, right: 0, top: 0, bottom: 0},
-    contentMargin: {left: 0, right: 0, top: 0, bottom: 0},
     textMargin: parseMargin(sections['InputPanel/TextMargin'] || {}),
     shadowMargin: {left: 0, right: 0, top: 0, bottom: 0},
 

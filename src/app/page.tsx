@@ -11,14 +11,15 @@ export default function Home() {
   return (
     <div className="flex min-h-screen">
       <div className="w-1/2 p-6 border-r overflow-y-auto">
-        <h2 className="text-2xl font-bold mb-6">Fcitx5 主题配置</h2>
+        <h2 className="text-2xl font-bold mb-6">fcitx5 theme designer</h2>
         <ThemeConfigForm
           initialConfig={ config }
           onConfigChange={ setConfig }
+          onConfigExport={()=>{}}
         />
       </div>
       <div className="w-1/2 p-6 sticky top-20 h-fit">
-        <h2 className="text-2xl font-bold mb-6">预览</h2>
+        <h2 className="text-2xl font-bold mb-6">preview</h2>
         <ThemePreview config={ config } />
       </div>
     </div>

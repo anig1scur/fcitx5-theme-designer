@@ -46,7 +46,6 @@ export interface ThemeConfig {
 
   // Margins
   blurMargin: Margin;
-  contentMargin: Margin;
   textMargin: Margin;
   shadowMargin: Margin;
 
@@ -60,67 +59,62 @@ export interface ThemeConfig {
 }
 
 export const defaultConfig: ThemeConfig = {
+  // Metadata
   name: 'default',
   author: '',
   description: '',
-  normalColor: '#000000',
-  highlightColor: '#FFFFFF',
-  highlightBackgroundColor: '#0066FF',
-  highlightCandidateColor: '#0066FF',
+
+  normalColor: '#81a1c1',
+  highlightColor: '#5e81ac',
+  highlightBackgroundColor: '#eceff4',
+  highlightCandidateColor: '#5e81ac',
   enableBlur: false,
   fullWidthHighlight: false,
-  pageButtonAlignment: 'Bottom',
+  pageButtonAlignment: 'Right',
 
+  // Margins
   blurMargin: {
-    top: 0,
-    right: 0,
-    bottom: 0,
     left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
   },
-
-  contentMargin: {
-    top: 10,
-    right: 10,
-    bottom: 10,
-    left: 10,
-  },
-
   textMargin: {
-    top: 5,
-    right: 5,
-    bottom: 5,
-    left: 5,
+    left: 10,
+    right: 10,
+    top: 6,
+    bottom: 6,
+  },
+  shadowMargin: {
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
   },
 
-  shadowMargin: {
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-  },
   background: {
-    color: '#FFFFFF',
-    borderColor: '#CCCCCC',
-    borderWidth: 1,
-    gravity: 'Top Left',
+    color: '#e5e9f0',
+    borderColor: '',
+    borderWidth: 0,
+    gravity: '',
     margin: {
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
+      left: 2,
+      right: 2,
+      top: 2,
+      bottom: 2,
     },
   },
 
   highlight: {
-    color: '#E5F3FF',
-    borderColor: '#0066FF',
-    borderWidth: 1,
-    gravity: 'Top Left',
+    color: '#d8dee9',
+    borderColor: '',
+    borderWidth: 0,
+    gravity: '',
     margin: {
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
+      left: 10,
+      right: 10,
+      top: 7,
+      bottom: 7,
     },
   },
 };

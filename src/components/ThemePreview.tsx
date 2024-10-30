@@ -2,7 +2,7 @@ import { ThemeConfig } from "@/types/theme";
 
 interface ThemePreviewProps {
   config: ThemeConfig;
-  direction?: 'horizontal' | 'vertical'; // 新增方向属性
+  direction?: 'horizontal' | 'vertical';
 }
 
 export function ThemePreview({ config, direction = 'vertical' }: ThemePreviewProps) {
@@ -10,12 +10,8 @@ export function ThemePreview({ config, direction = 'vertical' }: ThemePreviewPro
     backgroundColor: config.background.color,
     border: `${ config.background.borderWidth }px solid ${ config.background.borderColor }`,
     margin: '20px',
-    width: direction === 'vertical' ? '300px' : '500px', // 横向模式下宽度更大
+    width: direction === 'vertical' ? '300px' : 'fit-content',
     position: 'relative' as const,
-  };
-
-  const contentStyle = {
-    padding: `${ config.contentMargin.top }px ${ config.contentMargin.right }px ${ config.contentMargin.bottom }px ${ config.contentMargin.left }px`,
   };
 
   const textStyle = {
@@ -24,6 +20,7 @@ export function ThemePreview({ config, direction = 'vertical' }: ThemePreviewPro
 
   const candidateStyle = {
     ...textStyle,
+    whiteSpace: "nowrap",
     color: config.normalColor,
   };
 
@@ -35,8 +32,9 @@ export function ThemePreview({ config, direction = 'vertical' }: ThemePreviewPro
 
   const highlightStyle = {
     backgroundColor: config.highlight.color,
+    whiteSpace: "nowrap",
     border: `${ config.highlight.borderWidth }px solid ${ config.highlight.borderColor }`,
-    margin: `${ config.highlight.margin.top }px ${ config.highlight.margin.right }px ${ config.highlight.margin.bottom }px ${ config.highlight.margin.left }px`,
+    padding: `${ config.highlight.margin.top }px ${ config.highlight.margin.right }px ${ config.highlight.margin.bottom }px ${ config.highlight.margin.left }px`,
   };
 
   const candidatesContainerStyle = {
@@ -77,28 +75,27 @@ export function ThemePreview({ config, direction = 'vertical' }: ThemePreviewPro
     padding: `${ config.blurMargin.top }px ${ config.blurMargin.right }px ${ config.blurMargin.bottom }px ${ config.blurMargin.left }px`,
   } : {};
 
-  const candidateWidth = direction === 'horizontal' ? { width: '100px' } : {};
+  const candidateWidth = direction === 'horizontal' ? {} : { width: '100px' };
 
   return (
     <div>
-      <div className="rounded-lg shadow-lg" style={ { ...inputPanelStyle, ...blurStyle } }>
-        { ['Top', 'Left'].includes(config.pageButtonAlignment) && renderPageButtons() }
-        <div style={ contentStyle }>
-          <div className="space-y-2">
-            <div className="flex items-center space-x-2">
-              <span style={ { color: config.normalColor } }>ni hao</span>
-            </div>
-            <div style={ candidatesContainerStyle }>
-              <div style={ { ...highlightedCandidateStyle, ...highlightStyle, ...candidateWidth } }>
-                1. 你好
-              </div>
-              <div style={ { ...candidateStyle, ...candidateWidth } }>2. 拟好</div>
-              <div style={ { ...candidateStyle, ...candidateWidth } }>3. 逆号</div>
-              <div style={ { ...candidateStyle, ...candidateWidth } }>4. 倪浩</div>
-            </div>
-          </div>
+      <div style={ { ...inputPanelStyle, ...blurStyle } }>
+        {/* { ['Top', 'Left'].includes(config.pageButtonAlignment) && renderPageButtons() } */ }
+        <div className="flex items-center space-x-2 p-2">
+          <span style={ { color: config.normalColor } }>ni hao</span>
         </div>
-        { ['Bottom', 'Right'].includes(config.pageButtonAlignment) && renderPageButtons() }
+        <div style={ candidatesContainerStyle }>
+          <div style={ { ...highlightedCandidateStyle, ...highlightStyle, ...candidateWidth } }>
+            1. 你好
+          </div>
+          <div style={ { ...candidateStyle, ...candidateWidth } }>2. 拟好</div>
+          <div style={ { ...candidateStyle, ...candidateWidth } }>3. 逆号</div>
+          <div style={ { ...candidateStyle, ...candidateWidth } }>4. 倪浩</div>
+          <div style={ { ...candidateStyle, ...candidateWidth } }>5. 👋</div>
+          <div style={ { ...candidateStyle, ...candidateWidth } }>6. 你</div>
+          <div style={ { ...candidateStyle, ...candidateWidth } }>7. 拟</div>
+        </div>
+        {/* { ['Bottom', 'Right'].includes(config.pageButtonAlignment) && renderPageButtons() } */ }
       </div>
     </div>
   );

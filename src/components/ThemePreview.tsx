@@ -9,7 +9,7 @@ export function ThemePreview({ config, direction = 'vertical' }: ThemePreviewPro
   const inputPanelStyle = {
     backgroundColor: config.background.color,
     marginBottom: '20px',
-    width: direction === 'vertical' ? '300px' : 'fit-content',
+    width: 'fit-content',
     position: 'relative' as const,
   };
 
@@ -39,7 +39,6 @@ export function ThemePreview({ config, direction = 'vertical' }: ThemePreviewPro
   const candidatesContainerStyle = {
     display: 'flex',
     flexDirection: direction === 'vertical' ? 'column' : 'row',
-    gap: direction === 'vertical' ? undefined : '8px',
   } as const;
 
   const getPageButtonContainerStyle = () => {
@@ -74,7 +73,6 @@ export function ThemePreview({ config, direction = 'vertical' }: ThemePreviewPro
     padding: `${ config.blurMargin.top }px ${ config.blurMargin.right }px ${ config.blurMargin.bottom }px ${ config.blurMargin.left }px`,
   } : {};
 
-  const candidateWidth = direction === 'horizontal' ? {} : { width: '100px' };
 
   return (
     <div>
@@ -84,15 +82,15 @@ export function ThemePreview({ config, direction = 'vertical' }: ThemePreviewPro
           <span style={ { color: config.normalColor } }>ni hao</span>
         </div>
         <div style={ candidatesContainerStyle }>
-          <div style={ { ...highlightedCandidateStyle, ...highlightStyle, ...candidateWidth } }>
+          <div style={ { ...highlightedCandidateStyle, ...highlightStyle } }>
             1. 你好
           </div>
-          <div style={ { ...candidateStyle, ...candidateWidth } }>2. 拟好</div>
-          <div style={ { ...candidateStyle, ...candidateWidth } }>3. 逆号</div>
-          <div style={ { ...candidateStyle, ...candidateWidth } }>4. 倪浩</div>
-          <div style={ { ...candidateStyle, ...candidateWidth } }>5. 👋</div>
-          <div style={ { ...candidateStyle, ...candidateWidth } }>6. 你</div>
-          <div style={ { ...candidateStyle, ...candidateWidth } }>7. 拟</div>
+          <div style={ { ...candidateStyle } }>2. 拟好</div>
+          <div style={ { ...candidateStyle } }>3. 逆号</div>
+          <div style={ { ...candidateStyle } }>4. 倪浩</div>
+          <div style={ { ...candidateStyle } }>5. 👋</div>
+          <div style={ { ...candidateStyle } }>6. 你</div>
+          <div style={ { ...candidateStyle } }>7. 拟</div>
         </div>
         {/* { ['Bottom', 'Right'].includes(config.pageButtonAlignment) && renderPageButtons() } */ }
       </div>

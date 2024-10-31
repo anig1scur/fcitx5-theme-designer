@@ -28,9 +28,10 @@ export interface PageButton {
 
 export interface ThemeConfig {
   // Metadata
+  url?: string;
   name: string;
-  author: string;
-  description: string;
+  author?: string;
+  description?: string;
 
   // InputPanel
   normalColor: string;

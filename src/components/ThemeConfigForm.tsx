@@ -16,6 +16,7 @@ import { exportThemeFile } from "@/lib/utils";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useEffect } from "react";
 
 interface MarginFieldsProps {
   control: any;
@@ -98,6 +99,10 @@ export function ThemeConfigForm({ initialConfig, onConfigChange, onConfigExport 
   const exportTheme = () => {
     exportThemeFile(form.getValues());
   };
+
+  useEffect(() => {
+    form.reset(initialConfig);
+  }, [initialConfig, form]);
 
   return (
     <Form { ...form }>

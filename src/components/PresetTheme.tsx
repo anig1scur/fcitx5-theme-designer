@@ -1,4 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { DEFAULT_THEMES } from "@/lib/theme";
+import { ThemeConfig } from "@/types/theme";
 
 interface PresetPreviewProps {
   name: string;
@@ -10,35 +12,6 @@ interface PresetPreviewProps {
   highlightBackgroundColor?: string;
 }
 
-// Default theme presets
-export const DEFAULT_THEMES: PresetPreviewProps[] = [
-  {
-    name: "Nord-Light",
-    author: "tonyfettes",
-    url: "https://github.com/tonyfettes/fcitx5-nord",
-    textColor: "#81a1c1",
-    backgroundColor: "#e5e9f0",
-    highlightColor: "#5e81ac",
-    highlightBackgroundColor: "#eceff4"
-  },
-  {
-    name: "Spring",
-    author: "thepoy",
-    url: "https://github.com/thep0y/fcitx5-themes-candlelight/",
-    textColor: "#ffffff",
-    backgroundColor: "#000000",
-    highlightColor: "#ffffff",
-    highlightBackgroundColor: "transparent"
-  },
-  {
-    name: "Dracula",
-    url: "",
-    textColor: "#f8f8f2",
-    backgroundColor: "#282a36",
-    highlightColor: "#ff79c6",
-    highlightBackgroundColor: "#44475a"
-  }
-];
 
 const PresetThemePreview = (props: PresetPreviewProps) => {
   const {
@@ -52,12 +25,12 @@ const PresetThemePreview = (props: PresetPreviewProps) => {
   } = props;
 
   return (
-    <div className="rounded-lg p-2 hover:bg-black/5 transition-colors">
+    <div className="rounded-lg p-2 pb-3 hover:bg-black/5 transition-colors">
       <div className="space-y-2 mb-3">
         <div>
-          <a className="font-medium" href={ url } target="_blank">
+          <a className="text-gray-900 text-xl font-medium hover:cursor-help" href={ url } target="_blank" >
             <div>{ name }</div>
-            <div className="text-gray-600">{ author }</div>
+            <div className="text-sm text-gray-600">{ author }</div>
           </a>
         </div>
       </div>
@@ -72,20 +45,35 @@ const PresetThemePreview = (props: PresetPreviewProps) => {
           1. 你好
         </div>
         <div className="py-2 px-4">
-          2. 👋
+          2. 你
         </div>
       </div>
     </div>
   );
 }
 
+function mapThemeToPresetPreview(theme: ThemeConfig): PresetPreviewProps {
+  return {
+    name: theme.name,
+    url: theme.url,
+    author: theme.author,
+    textColor: theme.normalColor,
+    backgroundColor: theme.background.color,
+    highlightColor: theme.highlightColor || theme.highlightCandidateColor,
+    highlightBackgroundColor: theme.highlight.color || theme.highlightBackgroundColor
+  }
+}
+
 export function PresetTheme({
-  themes = DEFAULT_THEMES,
-  onSelect
+  themes = DEFAULT_THEMES.map(mapThemeToPresetPreview),
+  onSelect,
+  selected,
 }: {
   themes?: PresetPreviewProps[],
-  onSelect?: (index: number) => void
+  onSelect?: (index: number) => void,
+  selected?: number
 }) {
+
   if (!themes.length) {
     return <div>没有可用的主题</div>;
   }
@@ -95,12 +83,12 @@ export function PresetTheme({
       <CardHeader>
         <CardTitle>预设</CardTitle>
       </CardHeader>
-      <CardContent className="text-sm flex items-end">
+      <CardContent className="text-sm flex items-end gap-2">
         { themes.map((theme, index) => (
           <div
             key={ `theme-${ index }` }
             onClick={ () => onSelect?.(index) }
-            className="cursor-pointer"
+            className={ `cursor-pointer rounded-md ${ selected === index ? 'bg-gray-100' : '' }` }
           >
             <PresetThemePreview { ...theme } />
           </div>

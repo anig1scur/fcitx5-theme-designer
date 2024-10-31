@@ -99,12 +99,9 @@ export function ThemeConfigForm({ initialConfig, onConfigChange, onConfigExport 
     exportThemeFile(form.getValues());
   };
 
-
-
   return (
     <Form { ...form }>
       <form onChange={ form.handleSubmit(onSubmit) } className="space-y-6">
-        {/* Metadata Section */ }
         <Card>
           <CardHeader>
             <CardTitle>主题</CardTitle>
@@ -279,7 +276,7 @@ export function ThemeConfigForm({ initialConfig, onConfigChange, onConfigExport 
         </Card> */}
 
         <div className="flex justify-end">
-          <Button onClick={ exportTheme }>导出主题</Button>
+          <Button onClick={ exportTheme } className="from-sky-400 to-blue-500 bg-gradient-to-br shadow-md">导出主题</Button>
         </div>
       </form>
     </Form>

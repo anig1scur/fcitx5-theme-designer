@@ -8,8 +8,6 @@ export interface Margin {
 export interface Background {
   image?: string;
   color: string;
-  borderColor: string;
-  borderWidth: number;
   overlay?: string;
   gravity: string;
   overlayOffsetX?: number;
@@ -94,8 +92,6 @@ export const defaultConfig: ThemeConfig = {
 
   background: {
     color: '#e5e9f0',
-    borderColor: '',
-    borderWidth: 0,
     gravity: '',
     margin: {
       left: 2,
@@ -107,8 +103,6 @@ export const defaultConfig: ThemeConfig = {
 
   highlight: {
     color: '#d8dee9',
-    borderColor: '',
-    borderWidth: 0,
     gravity: '',
     margin: {
       left: 10,

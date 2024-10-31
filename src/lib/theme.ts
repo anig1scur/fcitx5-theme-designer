@@ -111,8 +111,6 @@ export function parseThemeFile(content: string): ThemeConfig {
     // Background
     background: {
       color: sections['InputPanel/Background']?.['Color'] || '#ffffff',
-      borderColor: '#000000',
-      borderWidth: 0,
       gravity: 'Center',
       margin: parseMargin(sections['InputPanel/Background/Margin'] || {}),
     },
@@ -120,8 +118,6 @@ export function parseThemeFile(content: string): ThemeConfig {
     // Highlight
     highlight: {
       color: sections['InputPanel/Highlight']?.['Color'] || '#ffffff',
-      borderColor: '#000000',
-      borderWidth: 0,
       gravity: 'Center',
       margin: parseMargin(sections['InputPanel/Highlight/Margin'] || {}),
     },

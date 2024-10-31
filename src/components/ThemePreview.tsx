@@ -8,8 +8,7 @@ interface ThemePreviewProps {
 export function ThemePreview({ config, direction = 'vertical' }: ThemePreviewProps) {
   const inputPanelStyle = {
     backgroundColor: config.background.color,
-    border: `${ config.background.borderWidth }px solid ${ config.background.borderColor }`,
-    margin: '20px',
+    marginBottom: '20px',
     width: direction === 'vertical' ? '300px' : 'fit-content',
     position: 'relative' as const,
   };
@@ -33,8 +32,8 @@ export function ThemePreview({ config, direction = 'vertical' }: ThemePreviewPro
   const highlightStyle = {
     backgroundColor: config.highlight.color,
     whiteSpace: "nowrap",
-    border: `${ config.highlight.borderWidth }px solid ${ config.highlight.borderColor }`,
-    padding: `${ config.highlight.margin.top }px ${ config.highlight.margin.right }px ${ config.highlight.margin.bottom }px ${ config.highlight.margin.left }px`,
+    // padding: `${ config.highlight.margin.top }px ${ config.highlight.margin.right }px ${ config.highlight.margin.bottom }px ${ config.highlight.margin.left }px`,
+    padding: `${ config.textMargin.top }px ${ config.textMargin.right }px ${ config.textMargin.bottom }px ${ config.textMargin.left }px`,
   };
 
   const candidatesContainerStyle = {
